@@ -10,7 +10,20 @@ window.addEventListener('load', function() {
 		var ime = document.querySelector("#uporabnik");
 		ime.textContent = uporabnikIme;
 	}
+	
+	var dodajOpomnik = function(event){
+		var nazivOpomnika = document.querySelector("#naziv_opomnika").value;
+		var casOpomnika = document.querySelector("#cas_opomnika").value;
+		document.querySelector("#cas_opomnika").value = "";
+	 	document.querySelector("#naziv_opomnika").value = "";
+	 	var opomnikiHTML = document.querySelector("#opomniki");
+	 	opomnikiHTML.innerHTML += "\n<div class='opomnik'>\n\t<div class='naziv_opomnika'>"+nazivOpomnika+"</div>"+
+	 		"\n\t<div class='cas_opomnika'> Opomnik čez <span>"+casOpomnika+"</span> sekund.</div>\n</div>";
+		console.log("clicked");
+	}
+	
 	document.querySelector("#prijavniGumb").addEventListener('click', izvediPrijavo);	
+	document.querySelector("#dodajGumb").addEventListener('click', dodajOpomnik);
 	//Posodobi opomnike
 	var posodobiOpomnike = function() {
 		var opomniki = document.querySelectorAll(".opomnik");
